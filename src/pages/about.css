@@ -1,0 +1,36 @@
+.about-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Adjust the height as needed */
+  }
+  
+  .about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .image-container {
+    flex: 1;
+  }
+  
+  .text-container {
+    flex: 1;
+  }
+  
+  @media (max-width: 768px) {
+    .about-content {
+      flex-direction: column;
+    }
+  
+    .image-container,
+    .text-container {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  

@@ -16,6 +16,7 @@ const Navbar = () => {
         setUser(res.data.user[0]);
       } catch (error) {
         console.error("Error fetching user data:", error);
+
       }
     };
 
