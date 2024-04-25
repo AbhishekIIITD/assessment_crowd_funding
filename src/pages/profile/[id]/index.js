@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import Button from "@mui/material/Button";
 import { toast } from "react-hot-toast";
 
-
 import {
   Container,
   Typography,
@@ -23,6 +22,21 @@ const UserDetailsPage = () => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [orders, setOrders] = useState([]);
+
+  const [openEditDialog, setOpenEditDialog] = useState(false);
+  const [editedFirstName, setEditedFirstName] = useState("");
+
+  const handleEditClick = () => {
+    setOpenEditDialog(true);
+    // Pre-fill the edit fields with current user data
+    setEditedFirstName(user.First_Name);
+  };
+
+  const handleEditClose = () => {
+    setOpenEditDialog(false);
+    // Clear edited values on dialog close
+    setEditedFirstName("");
+  };
 
   const fetchOrders = async (customerId) => {
     try {
@@ -120,9 +134,11 @@ const UserDetailsPage = () => {
           <Typography variant="subtitle1" color="textSecondary">
             {user.Email}
           </Typography>
-          <IconButton color="primary" aria-label="edit profile">
-            <EditIcon />
+          {/* <IconButton color="primary" aria-label="edit profile">
+            <EditIcon onClick={() => setOpenEditDialog(!openEditDialog)} />
           </IconButton>
+          {openEditDialog && <EditProfileForm user={user} setUser={setUser} />} */}
+
           <Button
             variant="contained"
             color="primary"

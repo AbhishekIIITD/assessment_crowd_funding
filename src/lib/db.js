@@ -5,7 +5,7 @@ export const executeQuery = async (query, data) => {
     const pool = await mysql.createPool({
       host: 'localhost',
       port: '3306',
-      database: 'fatafat',
+      database: 'assessment',
       user: 'root',
       password: 'Ashokasha@123',
       waitForConnections: true,
