@@ -17,6 +17,7 @@ const Navbar = () => {
         setUser(res.data.user[0]);
       } catch (error) {
         console.error("Error fetching user data:", error);
+
       }
     };
 
@@ -57,7 +58,7 @@ const Navbar = () => {
 
         <li className="mx-2">
         {user ? (
-            <Link href={"/profile/"+user.Email}>
+            <Link href={"/profile/"+user.Emaail}>
               <div className="flex items-center text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full">
                 <AccountCircleIcon />
                 <span className="ml-2">Profile</span>
