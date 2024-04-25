@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { InputAdornment, IconButton, List, ListItem, ListItemText } from '@mui/material';
 import {  Home as HomeIcon, AccountCircle as AccountCircleIcon, Info as InfoIcon, PersonAdd as PersonAddIcon,Login as LoginIcon  } from '@mui/icons-material';
 import axios from 'axios';
 import { useRouter } from 'next/router';
@@ -57,7 +56,7 @@ const Navbar = () => {
 
         <li className="mx-2">
         {user ? (
-            <Link href={"/profile/"+user.Email}>
+            <Link href={"/profile/"+user.username}>
               <div className="flex items-center text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full">
                 <AccountCircleIcon />
                 <span className="ml-2">Profile</span>

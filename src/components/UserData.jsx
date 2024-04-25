@@ -10,6 +10,9 @@ import {
   FormControlLabel,
   Select,
   MenuItem,
+  InputLabel,
+  Box,
+  Typography,
 } from "@mui/material";
 
 const UserData = () => {
@@ -18,8 +21,26 @@ const UserData = () => {
   const [gender, setGender] = useState("Male");
   const [skills, setSkills] = useState([]);
 
-  const handleSubmit = () => {
-    // Handle form submission logic here
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    try{
+      const userData = { username, password ,gender,skills};
+      const response = await fetch("/api/SignUp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData), 
+      });
+      const data = await response.json();
+      console.log("Success:", data);
+  
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+    }catch(error){
+      console.log(error)
+    }
     console.log("Form submitted:", { username, password, gender, skills });
   };
 
@@ -38,14 +59,16 @@ const UserData = () => {
           <Paper elevation={3} className="p-4 h-full">
             
             <img src="/male_avatar.png" alt="User Data" className="mx-auto my-auto h-full" />
-            
+            <Typography variant="h6" className="text-center mt-4 font-semibold">
+              USER DATA
+            </Typography>
           </Paper>
         </Grid>
 
         {/* Form Section */}
-        <Grid item xs={6} className="h-full overflow-y-auto">
+        <Grid item xs={6} className="h-full mt-20 overflow-y-auto">
           <Paper elevation={3} className="p-4 h-full">
-            <h2 className="text-xl font-semibold mb-4">User Form</h2>
+            <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             <form onSubmit={handleSubmit} onReset={handleReset}>
               <TextField
                 label="Username"
@@ -96,15 +119,17 @@ const UserData = () => {
                   label="Other"
                 />
               </RadioGroup>
+              <InputLabel id="demo-simple-select-label">Skills</InputLabel>
 
               <Select
+                labelId="demo-simple-select-label"
                 label="Skills"
                 variant="outlined"
                 fullWidth
                 multiple
                 value={skills}
                 onChange={(e) => setSkills(e.target.value)}
-                className="mb-4"
+                className="mb-8"
               >
                 <MenuItem value="JS">JS</MenuItem>
                 <MenuItem value="React">React</MenuItem>
@@ -113,7 +138,7 @@ const UserData = () => {
               </Select>
 
               <div className="flex justify-between">
-                <Button type="submit" variant="contained" color="primary">
+                <Button type="submit" variant="contained" color="primary" >
                   Submit
                 </Button>
                 <Button
@@ -126,6 +151,7 @@ const UserData = () => {
                 </Button>
               </div>
             </form>
+            </Box>
           </Paper>
         </Grid>
       </Grid>

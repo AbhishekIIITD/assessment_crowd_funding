@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const { username, password  } = req.body;
     console.log(req.body)
     // Fetch user from the database based on email
-    const user = await executeQuery(`SELECT * FROM Customers WHERE email='${username}'`);
+    const user = await executeQuery(`SELECT * FROM Customers WHERE username='${username}'`);
     console.log(JSON.stringify(user))
 
     if (user.length === 0) {
@@ -24,8 +24,8 @@ export default async function handler(req, res) {
 
     // If email and password match, create a token
     const tokenData = {
-        id: user[0].Customer_id,
-        email: user[0].Email
+        user_id: user[0].user_id,
+        username: user[0].username
     };
     const token = jwt.sign(tokenData, process.env.JWT_SECRET_KEY, { expiresIn: "1d" });
 

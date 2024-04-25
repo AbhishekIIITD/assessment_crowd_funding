@@ -6,12 +6,15 @@ export default async function handler(req, res) {
   try {
     const cookies = cookie.parse(req.headers.cookie || '');
     const token = cookies.token;
+    if(!token){
+      return res.status(404).json({ message: 'User not found' });
+    }
 
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-    const email = decodedToken.email;
+    const username = decodedToken.username;
 
-    const user = await executeQuery(`SELECT * FROM Users WHERE email='${email}'`);
+    const user = await executeQuery(`SELECT * FROM users WHERE username='${username}'`);
 
     // Checking if the user exists
     if (user.length === 0) {
