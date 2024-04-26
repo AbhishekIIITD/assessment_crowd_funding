@@ -6,9 +6,7 @@ export default async function handler(req, res) {
   try {
     const cookies = cookie.parse(req.headers.cookie || '');
     const token = cookies.token;
-    if(!token){
-      return res.status(404).json({ message: 'User not found' });
-    }
+    
 
     const decodedToken = jwt.verify(token, process.env.JWT_SECRET_KEY);
 

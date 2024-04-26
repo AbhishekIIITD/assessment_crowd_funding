@@ -8,7 +8,7 @@ export default async function handler(req, res) {
     const { username, password  } = req.body;
     console.log(req.body)
     // Fetch user from the database based on email
-    const user = await executeQuery(`SELECT * FROM Customers WHERE username='${username}'`);
+    const user = await executeQuery(`SELECT * FROM users WHERE username='${username}'`);
     console.log(JSON.stringify(user))
 
     if (user.length === 0) {
@@ -17,7 +17,7 @@ export default async function handler(req, res) {
     }
 
     // Check if the password matches
-    if (user[0].Password !== password) {
+    if (user[0].password !== password) {
       // If password doesn't match, return 401 Unauthorized
       return res.status(401).json({ message: 'Incorrect password' });
     }

@@ -55,7 +55,7 @@ const UserData = () => {
     <Container maxWidth="false" className=" h-3/6 flex flex-col">
       <Grid container spacing={0} className="flex-grow">
 
-        <Grid item xs={6} className="h-full overflow-hidden relative">
+        <Grid item xs={6} className="h-full overflow-hidden relative bg-[#6c63fe]">
           <Paper elevation={3} className="p-4 h-full">
             
             <img src="/male_avatar.png" alt="User Data" className="mx-auto my-auto h-full" />

@@ -42,8 +42,8 @@ const SignIn = () => {
       const data = await response.json();
       console.log('Success:',data);
       toast.success('Login success');
+      router.push("/profile/1")
       
-      router.push('/profile/'+data.user[0].Email);
     } catch (error) {
       console.error('Error fetching data:', error);
       toast.error('Error signing in');

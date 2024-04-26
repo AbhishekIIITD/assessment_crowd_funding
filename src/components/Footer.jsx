@@ -37,16 +37,16 @@ const Footer = () => {
               About Us
             </Typography>
             <Typography variant="body2">
-              Welcome to Fatafat, your ultimate destination for quick and
-              convenient online shopping! At Fatafat, we strive to provide you
-              with a seamless shopping experience, offering a vast array of
-              products at your fingertips.
+              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Optio
+              eveniet laborum minus recusandae est dignissimos ad iure
+              exercitationem provident ea omnis, earum ipsum corrupti in impedit
+              eos sint vitae ducimus.
             </Typography>
           </Grid>
         </Grid>
         <div className="text-center mt-8">
           <Typography variant="body2">
-            &copy; {new Date().getFullYear()} Fatafat.com. All rights reserved.
+            &copy; {new Date().getFullYear()} demo.com. All rights reserved.
           </Typography>
         </div>
       </div>

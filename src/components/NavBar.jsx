@@ -75,7 +75,7 @@ const Navbar = () => {
 
 
         <li className="mx-2">
-          <Link href="/about">
+          <Link href="#about">
             <div className="flex items-center text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full">
               <InfoIcon />
               <span className="ml-2">About Us</span>
