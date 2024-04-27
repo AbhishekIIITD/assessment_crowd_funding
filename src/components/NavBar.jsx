@@ -45,7 +45,7 @@ const Navbar = () => {
         {
           (!user)&&(
             <li className="mx-2">
-          <Link href="/register">
+          <Link href="#Register">
             <div className="flex items-center text-gray-700 hover:bg-gray-100 px-4 py-2 rounded-full">
               <PersonAddIcon />
               <span className="ml-2">Register</span>

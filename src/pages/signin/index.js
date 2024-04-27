@@ -66,7 +66,7 @@ const SignIn = () => {
       style={{ minHeight: '100vh' }}
       
     >
-        <div className="text-6xl font-extrabold text-left text-blue-600 translate-y-[-3rem]">Fatafat</div>
+        <div className="text-6xl font-extrabold text-left text-blue-600 translate-y-[-3rem]">Demo Site</div>
       <Grid item xs={12} sm={6} md={4}>
         <form onSubmit={handleSubmit}>
           <TextField

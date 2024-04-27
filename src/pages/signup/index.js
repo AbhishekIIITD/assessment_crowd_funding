@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { TextField, Button, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
+import Snackbar from '@mui/material/Snackbar';
+
 
 const Signup = () => {
   const router=useRouter()
@@ -8,6 +10,9 @@ const Signup = () => {
   const [lastName, setLastName] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState('');
+
 
   const handleSubmit = async(e) => {
     e.preventDefault();
@@ -22,17 +27,22 @@ const Signup = () => {
       });
       const data = await response.json();
       console.log("Success:", data);
-      router.push('/signin');
-  
+      
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-    }catch(error){
+  
+      // Show snackbar
+      setOpenSnackbar(true);
+      setSnackbarMessage('You are logged in successfully');
+  
+      // Redirect after showing snackbar
+      router.push('/signin');
+    } catch(error){
       console.log(error)
     }
-
-    
   };
+  
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
